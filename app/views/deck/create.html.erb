@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<% if @deck.count >= 1 %>
+			<% @deck.each do |card| %>
+				<%= card.name %>
+			<% end %>
+		<% else %>
+			<div>
+				Nenhum registro encontrado
+			</div>
+		<% end %>
+	</div>
+</div>
