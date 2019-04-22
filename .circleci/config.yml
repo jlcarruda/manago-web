@@ -1,0 +1,59 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: 'circleci/ruby:latest'
+    steps:
+      - checkout
+      - run:
+          name: Install Bundler
+          command: gem install bundler
+      - run:
+          name: Run Bundle
+          command: bundle install
+      - run:
+          name: Create Database
+          command: "rails db:create"
+      - run:
+          name: Migrations
+          command: "rails db:migrate"
+      - run:
+          name: Start Webservice
+          command: rails s
+  test:
+    docker:
+      - image: 'circleci/ruby:latest'
+    steps:
+      - checkout
+      - run:
+          name: Installing Gems
+          command: gem install rspec http
+      - run:
+          name: Run Tests
+          command: rspec
+  deploy:
+    docker:
+      - image: 'circleci/ruby:latest'
+    steps:
+      - checkout
+      - run:
+          name: Install Bundler
+          command: gem install bundler
+      - run:
+          name: Run Bundle
+          command: bundle install
+      - run:
+          name: Create Database
+          command: "rails db:create"
+      - run:
+          name: Migrations
+          command: "rails db:migrate"
+      - run:
+          name: Start Webservice
+          command: rails s
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build
+      - test
