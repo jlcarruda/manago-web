@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: 'circleci/ruby:latest'
+      - image: 'circleci/ruby:2.6-jessie-node'
     steps:
       - checkout
       - run:
@@ -22,7 +22,7 @@ jobs:
           command: rails s
   test:
     docker:
-      - image: 'circleci/ruby:latest'
+      - image: 'circleci/ruby:2.6-jessie-node'
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
           command: rspec
   deploy:
     docker:
-      - image: 'circleci/ruby:latest'
+      - image: 'circleci/ruby:2.6-jessie-node'
     steps:
       - checkout
       - run:
