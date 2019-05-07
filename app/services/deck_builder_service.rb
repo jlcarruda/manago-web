@@ -10,19 +10,19 @@ class DeckBuilderService
 	def process
 		return false unless @deck_text.present?
 		raw_array = @deck_text.split("\r\n")
-		card_list = []
+		compiled_list = []
 		failures = []
-		@deck = Deck.new
+		# @deck = Deck.new
 		raw_array.each_with_index do |card_row, index|
 			info = normalize card_row
 			card = get_card(info)
 			if card.present?
-				card_list << card
+				compiled_list << card
 			else
 				failures << { i: index, info: info }
 			end
 		end
-		card_list
+		compiled_list
 	end
 
 	private
@@ -54,6 +54,7 @@ class DeckBuilderService
 			card = Card.create(
 				uuid: resp.id,
 				name: resp.name,
+				uri: resp.uri,
 				normalized_name: resp.name.upcase,
 				image_url: resp.image_uris.normal,
 				scryfall_uri: resp.scryfall_uri,

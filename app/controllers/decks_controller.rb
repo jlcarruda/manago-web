@@ -1,8 +1,8 @@
-class DeckController < BaseController
+class DecksController < BaseController
 	def create
 		if params[:deck_text].present?
 			@raw = params[:deck_text]
-			@deck = DeckBuilderService.new(text: @raw).process
+			@list = DeckBuilderService.new(text: @raw).process
 		end
 	end
 
