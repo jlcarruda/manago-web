@@ -2,8 +2,8 @@ require 'scryfall/cards'
 
 class DeckBuilderService
 
-	def initialize(params={})
-		@deck_text = params[:text] if params[:text].present?
+	def initialize(text)
+		@deck_text = text if text.present?
 		@tags_symbols = ['@', '#']
 	end
 
