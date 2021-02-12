@@ -1,0 +1,6 @@
+<%= simple_form_for "", url: decks_path, class: "form-inline" do |f| %>
+	<div class="form-group">
+		<%= f.input :deck_text, as: :text, label: false, class: "form-control", input_html: { rows: 15 } %>
+	</div>
+	<%= f.submit "Enviar" %>
+<% end %>

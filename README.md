@@ -1,5 +1,7 @@
 # README
 
+[![CircleCI](https://circleci.com/gh/jlcarruda/manago-web.svg?style=svg)](https://circleci.com/gh/jlcarruda/manago-web)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
